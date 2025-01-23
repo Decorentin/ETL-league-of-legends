@@ -1,8 +1,11 @@
+import os
+import json
 import requests
 import csv
 import pandas as pd
 import sqlite3
 import openpyxl
+
 
 # Configuration
 API_KEY = "RGAPI-128d67f1-52f1-4cfe-82a0-966141951ed1"  # Remplacez par votre clé API valide
@@ -51,7 +54,7 @@ def print_top_players(region, num_players):
                 win_loss_ratio = "Infini"
             else:
                 win_loss_ratio = wins / losses
-                win_loss_ratio = "{:.2f}".format(win_loss_ratio) 
+                win_loss_ratio = "{:.2f}".format(win_loss_ratio)  # Formater avec 2 chiffres après la virgule
 
             print(f"{rank}. {summoner_name} - {league_points} LP - Victoires: {wins} - Défaites: {losses} - Série de victoires: {hot_streak_str} - Ratio Victoires/Défaites: {win_loss_ratio}")
             players_data.append({
@@ -101,10 +104,23 @@ def save_to_db(data, db_filename):
     conn.close()
     print(f"Données enregistrées dans {db_filename}")
 
+def save_raw_data(data, region):
+    """Enregistre les données brutes dans un fichier JSON dans le dossier interim."""
+    interim_dir = "data/interim"
+    os.makedirs(interim_dir, exist_ok=True)
+    filename = os.path.join(interim_dir, f"{region}_raw_data.json")
+    with open(filename, 'w', encoding='utf-8') as output_file:
+        json.dump(data, output_file, ensure_ascii=False, indent=4)
+    print(f"Données brutes enregistrées dans {filename}")
+
 if __name__ == "__main__":
     # Demander à l'utilisateur de choisir la région et le nombre de joueurs
     region = input("Veuillez entrer la région (e.g., euw1, na1, kr): ")
     num_players = int(input("Veuillez entrer le nombre de joueurs à afficher: "))
+
+    raw_data = get_challenger_league(region)
+    if raw_data:
+        save_raw_data(raw_data, region)
 
     players_data = print_top_players(region, num_players)
 
