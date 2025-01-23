@@ -2106,17 +2106,6 @@
             "hotStreak": false
         },
         {
-            "summonerId": "VJnUVE00tUgTKJg-rHDdwPmqEAKPGaAceBWImlin1RNWcLLHpgC_NeXlFQ",
-            "leaguePoints": 674,
-            "rank": "I",
-            "wins": 99,
-            "losses": 82,
-            "veteran": false,
-            "inactive": false,
-            "freshBlood": true,
-            "hotStreak": true
-        },
-        {
             "summonerId": "ggpd8yjqEfE0APArEW5kYYjxyGP5lMrP5sLj1P2ItYCWKqXH",
             "leaguePoints": 674,
             "rank": "I",
@@ -2214,6 +2203,17 @@
             "inactive": false,
             "freshBlood": true,
             "hotStreak": false
+        },
+        {
+            "summonerId": "VJnUVE00tUgTKJg-rHDdwPmqEAKPGaAceBWImlin1RNWcLLHpgC_NeXlFQ",
+            "leaguePoints": 669,
+            "rank": "I",
+            "wins": 99,
+            "losses": 82,
+            "veteran": false,
+            "inactive": false,
+            "freshBlood": true,
+            "hotStreak": true
         },
         {
             "summonerId": "Y8K0ZZ8jirWjGsvdjILSPbg8lu90STxnQXyJwH78Z36D_Pv1wNOU9JXUDg",
