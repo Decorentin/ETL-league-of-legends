@@ -36,7 +36,7 @@ Installez les dépendances :
 pip install -r requirements.txt
 ```
 
-Utilisation
+## Utilisation
 Remplacez la variable API_KEY dans le fichier program.py par votre clé API Riot Games.
 
 Exécutez le script :
@@ -46,7 +46,7 @@ python program.py
 ```
 Suivez les instructions à l'écran pour choisir la région, le nombre de joueurs à afficher et le format de sortie (CSV, Excel, SQLite).
 
-Structure du projet
+## Structure du projet
 
 ETL-league-of-legends/
 │
