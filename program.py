@@ -2,9 +2,10 @@ import requests
 import csv
 import pandas as pd
 import sqlite3
+import openpyxl
 
 # Configuration
-API_KEY = ""  # Remplacez par votre clé API valide
+API_KEY = "RGAPI-128d67f1-52f1-4cfe-82a0-966141951ed1"  # Remplacez par votre clé API valide
 QUEUE_TYPE = "RANKED_SOLO_5x5"  # File classée Solo/Duo
 
 def get_challenger_league(region):
