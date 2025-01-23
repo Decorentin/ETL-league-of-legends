@@ -1,4 +1,2 @@
 requests
 pandas
-csv
-sqlite3
