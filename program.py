@@ -39,7 +39,6 @@ def print_top_players(region, num_players):
         players = data.get("entries", [])
         # Trier par points de ligue (LP)
         sorted_players = sorted(players, key=lambda x: x.get("leaguePoints", 0), reverse=True)
-        print(f"Top {num_players} joueurs Challenger en {region} :")
         players_data = []
         for rank, player in enumerate(sorted_players[:num_players], start=1):
             summoner_name = player.get("summonerName", "Nom inconnu")
@@ -56,7 +55,6 @@ def print_top_players(region, num_players):
                 win_loss_ratio = wins / losses
                 win_loss_ratio = "{:.2f}".format(win_loss_ratio)  # Formater avec 2 chiffres après la virgule
 
-            print(f"{rank}. {summoner_name} - {league_points} LP - Victoires: {wins} - Défaites: {losses} - Série de victoires: {hot_streak_str} - Ratio Victoires/Défaites: {win_loss_ratio}")
             players_data.append({
                 "Rank": rank,
                 "SummonerName": summoner_name,
@@ -73,22 +71,31 @@ def print_top_players(region, num_players):
 
 def save_to_csv(data, filename):
     """Enregistre les données dans un fichier CSV."""
+    processed_dir = "data/processed"
+    os.makedirs(processed_dir, exist_ok=True)
+    file_path = os.path.join(processed_dir, filename)
     keys = data[0].keys()
-    with open(filename, 'w', newline='', encoding='utf-8') as output_file:
+    with open(file_path, 'w', newline='', encoding='utf-8') as output_file:
         dict_writer = csv.DictWriter(output_file, fieldnames=keys)
         dict_writer.writeheader()
         dict_writer.writerows(data)
-    print(f"Données enregistrées dans {filename}")
+    print(f"Données enregistrées dans {file_path}")
 
 def save_to_excel(data, filename):
     """Enregistre les données dans un fichier Excel."""
+    processed_dir = "data/processed"
+    os.makedirs(processed_dir, exist_ok=True)
+    file_path = os.path.join(processed_dir, filename)
     df = pd.DataFrame(data)
-    df.to_excel(filename, index=False)
-    print(f"Données enregistrées dans {filename}")
+    df.to_excel(file_path, index=False)
+    print(f"Données enregistrées dans {file_path}")
 
 def save_to_db(data, db_filename):
     """Enregistre les données dans une base de données SQLite."""
-    conn = sqlite3.connect(db_filename)
+    processed_dir = "data/processed"
+    os.makedirs(processed_dir, exist_ok=True)
+    file_path = os.path.join(processed_dir, db_filename)
+    conn = sqlite3.connect(file_path)
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS players (
                         Rank INTEGER,
@@ -102,7 +109,7 @@ def save_to_db(data, db_filename):
                           VALUES (:Rank, :SummonerName, :LeaguePoints, :Wins, :Losses, :HotStreak, :WinLossRatio)''', data)
     conn.commit()
     conn.close()
-    print(f"Données enregistrées dans {db_filename}")
+    print(f"Données enregistrées dans {file_path}")
 
 def save_raw_data(data, region):
     """Enregistre les données brutes dans un fichier JSON dans le dossier interim."""
