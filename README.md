@@ -52,6 +52,7 @@ Suivez les instructions à l'écran pour choisir la région, le nombre de joueur
 ## Structure du projet
  
 ETL-league-of-legends/
+
 │
 ├── data/
 │   ├── interim/
@@ -59,8 +60,11 @@ ETL-league-of-legends/
 │   └── processed/
 │       └── {filename}.{csv|xlsx|db}
 │
+
 ├── requirements.txt
+
 ├── README.md
+
 └── program.py
  
 data/interim/ : Contient les données brutes extraites de l'API.
