@@ -122,7 +122,7 @@ def save_raw_data(data, region):
 
 if __name__ == "__main__":
     # Demander à l'utilisateur de choisir la région et le nombre de joueurs
-    region = input("Veuillez entrer la région (e.g., euw1, na1, kr): ")
+    region = input("Veuillez entrer la région (euw1, na1, kr): ")
     num_players = int(input("Veuillez entrer le nombre de joueurs à afficher: "))
 
     raw_data = get_challenger_league(region)
