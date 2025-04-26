@@ -15,6 +15,7 @@ Ce projet extrait les données des joueurs Challenger de League of Legends à pa
 - Python 3
 - `pip` pour installer les dépendances
 - Clé API Riot Games (vous pouvez obtenir une clé API en vous inscrivant sur le [site des développeurs Riot](https://developer.riotgames.com/))
+
  
 ## Installation
  
